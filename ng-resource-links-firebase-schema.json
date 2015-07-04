@@ -1,0 +1,32 @@
+{
+  "links" : [
+      {
+        "url":"http://www.google.com",
+        "title":"Google",
+        "createdAt":"DATE",
+        "createdBy":{
+          "name":"USERNAME",
+          "uid":"USERID"
+        },
+        "tags": [
+          {
+            "name":"TAGNAME",
+            "tagId":"TAGID"
+          }
+        ],
+        "isHelpful": [
+          {
+            "userId":"UID",
+            "userName":"USERNAME",
+            "helpful":true,
+            "recommended":true
+          }
+        ]
+    }
+  ],
+  "tags" : [
+    {
+      "tagName":"TAGNAME"
+    }
+  ]
+}

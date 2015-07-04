@@ -1,0 +1,14 @@
+{
+  "name": "ng-resource-links",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andy Pyle",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^3.9.0"
+  }
+}

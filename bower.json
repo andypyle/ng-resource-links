@@ -1,0 +1,23 @@
+{
+  "name": "ng-resource-links",
+  "version": "0.0.0",
+  "authors": [
+    "Andrew Pyle <andy.pyle@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.1",
+    "angularfire": "~1.1.2",
+    "velocity": "~1.2.2",
+    "angular-velocity": "~0.3.2",
+    "angular-momentjs": "~0.1.9"
+  }
+}

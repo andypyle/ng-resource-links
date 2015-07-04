@@ -1,0 +1,9 @@
+{
+  "firebase": "ng-resource-share",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
