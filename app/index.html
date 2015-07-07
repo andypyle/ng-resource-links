@@ -15,7 +15,7 @@
     </header>
     <section ng-if="loadingData" class="loading"><i class="fa fa-spinner fa-pulse"></i></section>
     <section id="linkList" ng-controller="linksCtrl as links">
-      <p ng-repeat="link in links.links">{{ link.$id }} - {{ link.title }} - {{ link.url }} </p>
+      <p ng-repeat="link in links.links"><span ng-bind="link.$id"></span><span ng-bind="link.title"></span><span ng-bind="link.url"></span></p>
     </section>
   </main>
   <script src="components/jquery/dist/jquery.min.js"></script>

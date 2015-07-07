@@ -18,7 +18,10 @@ body(ng-app='ngResourceApp')
     section.loading(ng-if='loadingData')
       i.fa.fa-spinner.fa-pulse
     section#linkList(ng-controller='linksCtrl as links')
-      p(ng-repeat='link in links.links') {{ link.$id }} - {{ link.title }} - {{ link.url }} 
+      p(ng-repeat='link in links.links')
+        span(ng-bind='link.$id')
+        span(ng-bind='link.title')
+        span(ng-bind='link.url')
       
   script(src='components/jquery/dist/jquery.min.js')
   script(src='components/velocity/velocity.js')
