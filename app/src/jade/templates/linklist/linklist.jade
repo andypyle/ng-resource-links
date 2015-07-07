@@ -1,1 +1,6 @@
 // Template for link-list directive.
+
+p(ng-repeat='link in links')
+  span(ng-bind='link.$id')
+  span(ng-bind='link.title')
+  span(ng-bind='link.url')

@@ -17,11 +17,9 @@ body(ng-app='ngResourceApp')
 
     section.loading(ng-if='loadingData')
       i.fa.fa-spinner.fa-pulse
+      
     section#linkList(ng-controller='linksCtrl as links')
-      p(ng-repeat='link in links.links')
-        span(ng-bind='link.$id')
-        span(ng-bind='link.title')
-        span(ng-bind='link.url')
+      list-links
       
   script(src='components/jquery/dist/jquery.min.js')
   script(src='components/velocity/velocity.js')
@@ -36,8 +34,12 @@ body(ng-app='ngResourceApp')
   
   script(src='login/login-directive.js')
   script(src='login/login-service.js')
+  
   script(src='app.js')
   script(src='config.js')
+  script(src='linklist/linklist-service.js')
+  script(src='linklist/linklist-directive.js')
+  
   
   
   
