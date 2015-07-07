@@ -2,27 +2,25 @@
 <head>
   <title>Page title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="styles/style.min.css">
 </head>
-<body>
+<body ng-app="ngResourceApp">
   <main>
     <header>
       <div class="brand">
         <h1><a href="#">BrandName</a></h1>
+        <fire-login google github email></fire-login>
       </div>
-      <nav>
-        <ul class="nav">
-          <li><a href="#login">Login</a></li>
-          <li><a href="#logout">Logout</a></li>
-        </ul>
-      </nav>
     </header>
-    <section id="linkList">
-      <p>List of links go here.</p>
+    <section ng-if="loadingData" class="loading"><i class="fa fa-spinner fa-pulse"></i></section>
+    <section id="linkList" ng-controller="linksCtrl as links">
+      <p ng-repeat="link in links.links">{{ link.$id }} - {{ link.title }} - {{ link.url }} </p>
     </section>
   </main>
   <script src="components/jquery/dist/jquery.min.js"></script>
   <script src="components/velocity/velocity.js"></script>
+  <script src="components/velocity/velocity.ui.js"></script>
   <script src="components/firebase/firebase.js"></script>
   <script src="components/moment/moment.js"> </script>
   <script src="components/angular/angular.js"></script>
@@ -30,4 +28,8 @@
   <script src="components/angular-momentjs/angular-momentjs.js"></script>
   <script src="components/angular-velocity/angular-velocity.js"></script>
   <script src="components/angularfire/dist/angularfire.js"></script>
+  <script src="login/login-directive.js"></script>
+  <script src="login/login-service.js"></script>
+  <script src="app.js"></script>
+  <script src="config.js"></script>
 </body>

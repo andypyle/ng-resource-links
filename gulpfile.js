@@ -18,7 +18,8 @@ var sources = {
     }
   },
   'jade':{
-    'in':'./app/src/jade/index.jade',
+    'templatesIn':'./app/src/jade/templates/**/*.jade',
+    'indexIn':'./app/src/jade/index.jade',
     'out':'./app/',
     'opts':{
       'locals': {},
@@ -53,9 +54,13 @@ gulp.task('sass', function(){
 });
 
 gulp.task('jade', function(){
-  gulp.src(sources.jade.in)
+  gulp.src(sources.jade.indexIn)
 		.pipe(jade(sources.jade.opts))
 		.pipe(gulp.dest(sources.jade.out));
+
+  gulp.src(sources.jade.templatesIn)
+  	.pipe(jade(sources.jade.opts))
+  	.pipe(gulp.dest(sources.jade.out));
 });
 
 gulp.task('watch', function(){
