@@ -1,0 +1,536 @@
+* {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+main {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+  padding-top: 5rem;
+}
+
+main header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+     -moz-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 5rem;
+  padding: 1.5rem 12.5% !important;
+  margin: 0;
+  background-color: #41bef7;
+  color: white;
+  position: absolute;
+  top: 0;
+}
+
+main header a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+main header .brand h1 {
+  font-size: 1.95rem;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+
+main header .login ul.fire-login {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+  width: 100%;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-box-align: baseline;
+  -webkit-align-items: baseline;
+     -moz-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+main header .login ul.fire-login li {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+     -moz-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+main header .login ul.fire-login li.login-github a {
+  margin-right: 1rem !important;
+}
+
+main header .login ul.fire-login li.logout {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main header .login ul.fire-login li.logout .logout-user {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main header .login ul.fire-login li.logout .logout-user img {
+  width: 50px;
+  height: auto;
+  border-radius: 15% 50% 15% 50%;
+}
+
+main header .login ul.fire-login li.logout .logout-user span {
+  padding: .5rem;
+  font-size: 1.1rem;
+}
+
+main header .login ul.fire-login li.logout .logout-btn a {
+  font-size: .9rem;
+  padding: 0 0 0 1.25rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+main header .login ul.fire-login li.logout .logout-btn a i {
+  padding-left: .25rem;
+}
+
+main section {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 80%;
+  padding: 1.5rem;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+     -moz-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-align-content: stretch;
+      -ms-flex-line-pack: stretch;
+          align-content: stretch;
+}
+
+main section article {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1rem;
+  background-color: #ebf6eb;
+  border-radius: .25rem;
+  color: #466947;
+  margin-bottom: 1.5rem;
+}
+
+main section article.submitLink {
+  background-color: #edf9fe;
+  color: #5d9bb8;
+}
+
+main section article.submitLink .addLink-heading {
+  width: 100%;
+}
+
+main section article.submitLink .addLink-heading h2 {
+  margin-top: 0;
+  font-size: 1.75rem;
+}
+
+main section article.submitLink #addLink {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main section article.submitLink #addLink .addLink-title,
+main section article.submitLink #addLink .addLink-url,
+main section article.submitLink #addLink .addLink-description,
+main section article.submitLink #addLink .addLink-tags,
+main section article.submitLink #addLink .addLink-submit {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main section article.submitLink #addLink .addLink-title,
+main section article.submitLink #addLink .addLink-url,
+main section article.submitLink #addLink .addLink-description,
+main section article.submitLink #addLink .addLink-tags,
+main section article.submitLink #addLink .addLink-submit {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 1.25rem;
+  padding: .5rem;
+}
+
+main section article.submitLink #addLink .addLink-title label,
+main section article.submitLink #addLink .addLink-url label,
+main section article.submitLink #addLink .addLink-description label,
+main section article.submitLink #addLink .addLink-tags label,
+main section article.submitLink #addLink .addLink-submit label {
+  -webkit-box-ordinal-group: 0;
+  -webkit-order: -1;
+     -moz-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
+  font-size: .9rem;
+  -webkit-transition: all 250ms ease-in-out;
+     -moz-transition: all 250ms ease-in-out;
+          transition: all 250ms ease-in-out;
+}
+
+main section article.submitLink #addLink .addLink-submit {
+  width: 25%;
+  -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
+          align-self: flex-end;
+  margin-top: .25rem;
+}
+
+main section article.submitLink #addLink .addLink-submit input[type='submit'] {
+  border: 0;
+  outline: 0;
+  margin: 0;
+  background-color: #29B6F6;
+  color: #FFF;
+  padding: .25rem;
+  font-size: 1.15rem;
+  border-radius: .25rem;
+  -webkit-transition: all 250ms ease-in-out;
+     -moz-transition: all 250ms ease-in-out;
+          transition: all 250ms ease-in-out;
+}
+
+main section article.submitLink #addLink .addLink-submit input[type='submit']:hover {
+  cursor: pointer;
+}
+
+main section article.submitLink #addLink .addLink-tags {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main section article.submitLink #addLink .addLink-tags label span {
+  font-size: .75rem;
+  padding-left: .5rem;
+}
+
+main section article.submitLink #addLink .addLink-tags .addLink-tags-input {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main section article.submitLink #addLink .addLink-tags .addLink-tags-spans {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  margin-top: .4rem;
+}
+
+main section article.submitLink #addLink .addLink-tags .addLink-tags-spans span {
+  padding: .35rem;
+  line-height: 1;
+  margin: .25rem;
+  font-size: .85rem;
+  background-color: #dde3e6;
+  color: #79a67b;
+  border-radius: .2rem;
+}
+
+main section article.submitLink #addLink input[type='text'],
+main section article.submitLink #addLink input[type='url'],
+main section article.submitLink #addLink textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(70, 105, 71, 0.5);
+  background-color: #edf9fe;
+  outline: 0;
+  padding: .5rem;
+  font-size: 1.05rem;
+}
+
+main section article .link-heading {
+  width: 100%;
+  position: relative;
+}
+
+main section article .link-heading h2 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+main section article .link-heading h2 a {
+  color: #466947;
+}
+
+main section article .link-heading .delete-link-btn a {
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
+  color: #E57373;
+}
+
+main section article .link-description p {
+  color: #82ac84;
+  line-height: 1.5;
+  font-size: 1.15rem;
+  font-weight: normal;
+}
+
+main section article .link-footer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+     -moz-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+  -webkit-align-items: baseline;
+     -moz-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+main section article .link-footer .link-footer-postedby {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main section article .link-footer .link-footer-postedby span {
+  color: #a1c1a2;
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+main section article .link-footer .link-footer-postedby span.postedOn {
+  font-size: .75rem;
+}
+
+main section article .link-footer .link-footer-tags {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+     -moz-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  max-width: 70%;
+}
+
+main section article .link-footer .link-footer-tags a {
+  padding: .35rem;
+  line-height: 1;
+  margin: .25rem;
+  font-size: .85rem;
+  background-color: #dde3e6;
+  color: #79a67b;
+  border-radius: .2rem;
+}
+
+main footer {
+  width: 100%;
+  background-color: #29B6F6;
+  color: #FFF;
+  padding: 1.5rem;
+  text-align: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.error, .descError, .urlError, .urlExists, .titleError {
+  color: #E57373;
+  -webkit-transform: scale(1.025) translateX(10px);
+     -moz-transform: scale(1.025) translateX(10px);
+      -ms-transform: scale(1.025) translateX(10px);
+          transform: scale(1.025) translateX(10px);
+  -webkit-transition: all 250ms ease-in-out;
+     -moz-transition: all 250ms ease-in-out;
+          transition: all 250ms ease-in-out;
+}
+
+.descError:after {
+  content: 'Maximum 300 characters!';
+  padding-left: .25rem;
+  font-weight: bold;
+}
+
+.urlError:after {
+  content: 'Must be valid URL!';
+  padding-left: .25rem;
+  font-weight: bold;
+}
+
+.urlExists:after {
+  content: 'Link exists!';
+  padding-left: .25rem;
+  font-weight: bold;
+}
+
+.titleError:after {
+  content: 'Maximum 140 characters!';
+  padding-left: .25rem;
+  font-weight: bold;
+}
+
+.disabled {
+  opacity: .2;
+  background-color: #61a1be;
+  color: #d9d9d9;
+  -webkit-transition: all 250ms ease-in-out;
+     -moz-transition: all 250ms ease-in-out;
+          transition: all 250ms ease-in-out;
+}
+
+.disabled:hover {
+  cursor: default !important;
+}

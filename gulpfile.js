@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     minify = require('gulp-minify-css')
     concat = require('gulp-concat'),
     rename = require('gulp-rename')
-    gutil = require('gulp-util');
+    gutil = require('gulp-util'),
+    serve = require('gulp-serve');
 
 // Set up directories.
 var sources = {
@@ -63,8 +64,10 @@ gulp.task('jade', function(){
   	.pipe(gulp.dest(sources.jade.out));
 });
 
+gulp.task('serve', serve('app'));
+
 gulp.task('watch', function(){
 	gulp.watch(['./app/src/sass/**/*.sass', './app/src/jade/**/*.jade'], ['sass','jade']);
 });
 
-gulp.task('default', ['sass','jade', 'watch']);
+gulp.task('default', ['sass','jade','serve','watch']);

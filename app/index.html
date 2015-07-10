@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-  <title>Page title</title>
+  <title>ngResourceBase</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="styles/style.min.css">
@@ -9,14 +9,20 @@
   <main>
     <header>
       <div class="brand">
-        <h1><a href="#">BrandName</a></h1>
+        <h1><a href="#">ngResourceBase</a></h1>
+      </div>
+      <div class="login">
         <fire-login google github email></fire-login>
       </div>
     </header>
     <section ng-if="loadingData" class="loading"><i class="fa fa-spinner fa-pulse"></i></section>
     <section id="linkList" ng-controller="linksCtrl as links">
+      <submit-link></submit-link>
       <list-links></list-links>
     </section>
+    <footer>
+      <p>Created by <a href="http://andypyle.github.io" target="_BLANK">Andy Pyle</a> &copy;2015</p>
+    </footer>
   </main>
   <script src="components/jquery/dist/jquery.min.js"></script>
   <script src="components/velocity/velocity.js"></script>
@@ -32,6 +38,7 @@
   <script src="login/login-service.js"></script>
   <script src="app.js"></script>
   <script src="config.js"></script>
+  <script src="linksubmit/linksubmit-directive.js"></script>
   <script src="linklist/linklist-service.js"></script>
   <script src="linklist/linklist-directive.js"></script>
 </body>

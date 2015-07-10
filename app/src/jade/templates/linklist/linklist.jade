@@ -1,6 +1,22 @@
 // Template for link-list directive.
-
-p(ng-repeat='link in links')
-  span(ng-bind='link.$id')
-  span(ng-bind='link.title')
-  span(ng-bind='link.url')
+article(ng-repeat="link in links | orderBy:'-createdAt'").link-post
+  .link-heading
+    h2
+      a(ng-href='{{link.url}}', ng-bind='link.title', target='_BLANK')
+    
+    .delete-link-btn
+      a(href='#')
+        i.fa.fa-times.fa-2x
+      
+  .link-description  
+    p {{ link.description }}
+    p
+      span(ng-bind="ownsDocument(['{{link.$id}}'])")
+    
+  .link-footer
+    .link-footer-postedby
+      span.postedBy Posted by {{ link.createdBy.name }}
+      span.postedOn {{ link.createdAt | stringToDate }}
+      
+    .link-footer-tags
+      a(href='#', ng-repeat="tag in link.tags track by $index") {{ tag }}

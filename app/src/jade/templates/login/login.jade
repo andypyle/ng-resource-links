@@ -1,16 +1,18 @@
 // Template for login directive.
 
 ul.fire-login
-  li(ng-if='!checkUser() && github')
+  li(ng-if='!checkUser() && github').login-github
     a(href='#', ng-click='authGithub()')
-      i.fa.fa-github-square.fa-2x
+      i.fa.fa-github-square.fa-3x
   
-  li(ng-if='!checkUser() && google')
+  li(ng-if='!checkUser() && google').login-google
     a(href='#', ng-click='authGoogle()')
-      i.fa.fa-google-plus-square.fa-2x
+      i.fa.fa-google-plus-square.fa-3x
     
-  li(ng-if='checkUser()')
-    a(href='#', ng-click='signOut()') Log Out
-      i.fa.fa-sign-out.fa-lg
-    br
-    span {{getUserInfo().displayName}}
+  li(ng-if='checkUser()').logout
+    .logout-user
+      img(ng-src='{{getUserInfo().avatar}}')
+      span {{getUserInfo().name}}
+    .logout-btn
+      a(href='#', ng-click='signOut()') Log Out
+        i.fa.fa-sign-out

@@ -1,19 +1,12 @@
-app = angular.module('ngResourceApp', ['firebase','loginDirective']);
+app = angular.module('ngResourceApp', ['firebase','loginDirective','angular-momentjs']);
 
 app.controller('linksCtrl', function($rootScope, FIREBASE_URI, $firebaseArray, $firebaseAuth, fireUser){
   var scope = this;
-  //var fb = new Firebase(FIREBASE_URI);
 
+});
 
-  
-  /*
-  fireUser.isLoggedIn().$onAuth(function(authData){
-    if(!authData){
-      console.log('You are not logged in. Please log in.');
-    } else {
-      scope.links = $firebaseArray(fb.child('links'));
-      scope.loadingData = false;
-    }
-  });
-  */
+app.filter('stringToDate', function($moment){
+  return function(dateIn){
+    return $moment(dateIn).format('M/D/YYYY') + ' at ' + $moment(dateIn).format('h:mmA');
+  }
 });

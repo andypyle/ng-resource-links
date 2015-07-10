@@ -1,3 +1,16 @@
 
 <!-- Template for link-list directive.-->
-<p ng-repeat="link in links"><span ng-bind="link.$id"></span><span ng-bind="link.title"></span><span ng-bind="link.url"></span></p>
+<article ng-repeat="link in links | orderBy:'-createdAt'" class="link-post">
+  <div class="link-heading">
+    <h2><a ng-href="{{link.url}}" ng-bind="link.title" target="_BLANK"></a></h2>
+    <div class="delete-link-btn"><a href="#"><i class="fa fa-times fa-2x"></i></a></div>
+  </div>
+  <div class="link-description"> 
+    <p>{{ link.description }}</p>
+    <p><span ng-bind="ownsDocument(['{{link.$id}}'])"></span></p>
+  </div>
+  <div class="link-footer">
+    <div class="link-footer-postedby"><span class="postedBy">Posted by {{ link.createdBy.name }}</span><span class="postedOn">{{ link.createdAt | stringToDate }}</span></div>
+    <div class="link-footer-tags"><a href="#" ng-repeat="tag in link.tags track by $index">{{ tag }}</a></div>
+  </div>
+</article>

@@ -1,7 +1,10 @@
 
 <!-- Template for login directive.-->
 <ul class="fire-login">
-  <li ng-if="!checkUser() &amp;&amp; github"><a href="#" ng-click="authGithub()"><i class="fa fa-github-square fa-2x"></i></a></li>
-  <li ng-if="!checkUser() &amp;&amp; google"><a href="#" ng-click="authGoogle()"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
-  <li ng-if="checkUser()"><a href="#" ng-click="signOut()">Log Out<i class="fa fa-sign-out fa-lg"></i></a><br/><span>{{getUserInfo().displayName}}</span></li>
+  <li ng-if="!checkUser() &amp;&amp; github" class="login-github"><a href="#" ng-click="authGithub()"><i class="fa fa-github-square fa-3x"></i></a></li>
+  <li ng-if="!checkUser() &amp;&amp; google" class="login-google"><a href="#" ng-click="authGoogle()"><i class="fa fa-google-plus-square fa-3x"></i></a></li>
+  <li ng-if="checkUser()" class="logout">
+    <div class="logout-user"><img ng-src="{{getUserInfo().avatar}}"/><span>{{getUserInfo().name}}</span></div>
+    <div class="logout-btn"><a href="#" ng-click="signOut()">Log Out<i class="fa fa-sign-out"></i></a></div>
+  </li>
 </ul>

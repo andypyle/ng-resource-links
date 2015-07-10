@@ -1,6 +1,6 @@
 doctype html
 head
-  title Page title
+  title ngResourceBase
   meta(name='viewport', content='width=device-width, initial-scale=1.0')
   
   link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css')
@@ -11,15 +11,20 @@ body(ng-app='ngResourceApp')
     header
       .brand
         h1
-          a(href='#') BrandName
+          a(href='#') ngResourceBase
         
+      .login
         fire-login(google, github, email)
 
     section.loading(ng-if='loadingData')
       i.fa.fa-spinner.fa-pulse
       
     section#linkList(ng-controller='linksCtrl as links')
+      submit-link
       list-links
+      
+    footer
+      p Created by #[a(href='http://andypyle.github.io', target='_BLANK') Andy Pyle] &copy;2015
       
   script(src='components/jquery/dist/jquery.min.js')
   script(src='components/velocity/velocity.js')
@@ -37,6 +42,7 @@ body(ng-app='ngResourceApp')
   
   script(src='app.js')
   script(src='config.js')
+  script(src='linksubmit/linksubmit-directive.js')
   script(src='linklist/linklist-service.js')
   script(src='linklist/linklist-directive.js')
   

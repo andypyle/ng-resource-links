@@ -1,2 +1,31 @@
 
 <!-- Template for link-submit directive.-->
+<article ng-if="canSubmit" class="submitLink">
+  <div class="addLink-heading">
+    <h2>Add Link </h2>
+  </div>
+  <form id="addLink" name="addLinkForm" ng-submit="addLink(linkAdd.title, linkAdd.url, linkAdd.desc, linkTagsArray)">
+    <div class="addLink-title">
+      <input type="text" ng-model="linkAdd.title" name="linkTitle" ng-maxlength="140" maxlength="140" required="required"/>
+      <label for="linkTitle" ng-class="{'titleError': !addlinkForm.link.title.$pristine &amp;&amp; addLinkForm.linkTitle.$error.maxlength || linkAdd.title.length === 140}">Title</label>
+    </div>
+    <div class="addLink-url">
+      <input type="url" ng-model="linkAdd.url" name="linkUrl" ng-pattern="/^(https?://)?([da-z.-]+).([a-z.]{2,6})([/w .-]*)*/?$/" ng-change="checkLink(linkAdd.url)" required="required"/>
+      <label for="linkUrl" ng-class="{'urlError':addLinkForm.linkUrl.$error.pattern || addLinkForm.linkUrl.$error.url, 'urlExists': linkExists}">URL</label>
+    </div>
+    <div class="addLink-description">
+      <textarea ng-model="linkAdd.desc" name="linkDesc" ng-maxlength="300" maxlength="300" required="required"></textarea>
+      <label for="linkDesc" ng-class="{'descError': !addlinkForm.linkDesc.$pristine &amp;&amp; addLinkForm.linkDesc.$error.maxlength || linkAdd.desc.length === 300}">Description</label>
+    </div>
+    <div class="addLink-tags">
+      <div class="addLink-tags-input">
+        <input type="text" ng-model="linkAdd.tags" name="linkTags" ng-change="addToTags(linkAdd.tags)" ng-keypress="addToTags(linkAdd.tags)" required="required"/>
+      </div>
+      <div class="addLink-tags-spans"><span ng-repeat="tag in linkTagsArray track by $index">{{ tag }}</span></div>
+      <label for="linkTags">Tags<span>(Seperated by commas)</span></label>
+    </div>
+    <div class="addLink-submit">
+      <input type="submit" ng-disabled="linkExists || addLinkForm.$invalid" ng-class="{'disabled': linkExists || addLinkForm.$invalid}"/>
+    </div>
+  </form>
+</article>
