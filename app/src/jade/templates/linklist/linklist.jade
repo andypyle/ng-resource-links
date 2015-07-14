@@ -1,17 +1,20 @@
 // Template for link-list directive.
-article(ng-repeat="link in links | orderBy:'-createdAt'").link-post
+article(ng-repeat="link in links | orderBy:'-createdAt'", ng-if="isLoggedIn").link-post
   .link-heading
     h2
       a(ng-href='{{link.url}}', ng-bind='link.title', target='_BLANK')
     
-    .delete-link-btn
-      a(href='#')
-        i.fa.fa-times.fa-2x
+    .delete-link-btn(ng-if="ownsDocument(link.$id)")
+      a(href='#').link-edit
+        i.fa.fa-edit.fa-lg
+      a(href='#', ng-click='linkDelete(link.$id)').link-delete
+        i.fa.fa-times.fa-lg
+        
+  .link-subhead
+    a.link-url(ng-bind='link.url', ng-href='link.url', target='_BLANK')
       
   .link-description  
     p {{ link.description }}
-    p
-      span(ng-bind="ownsDocument(['{{link.$id}}'])")
     
   .link-footer
     .link-footer-postedby
@@ -20,3 +23,6 @@ article(ng-repeat="link in links | orderBy:'-createdAt'").link-post
       
     .link-footer-tags
       a(href='#', ng-repeat="tag in link.tags track by $index") {{ tag }}
+      
+article.error(ng-if='!isLoggedIn')
+  p You aren't logged in. Try logging in.

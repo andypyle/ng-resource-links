@@ -19,7 +19,8 @@ login.directive('fireLogin', function($firebaseAuth, FIREBASE_URI, fireUser){
       }
 
       scope.checkUser = function(){
-        return fireUser.isLoggedIn();
+        scope.loggedIn = fireUser.isLoggedIn();
+        return scope.loggedIn;
       }
 
       scope.getUserInfo = function(){
@@ -29,8 +30,6 @@ login.directive('fireLogin', function($firebaseAuth, FIREBASE_URI, fireUser){
       scope.signOut = function(){
         return fireUser.logOut();
       }
-
-      fireUser.getUser();
     }
   }
 });

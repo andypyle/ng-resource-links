@@ -6,38 +6,53 @@ var fb = new Firebase(FIREBASE_URI + 'links/');
       scope: {},
       link: function(scope, elem, attrs){
         scope.loadingData = true;
-        scope.links = [];
+        scope.isLoggedIn = (fireUser.isLoggedIn()) ? true:false;
 
-        fireUser.isLoggedIn().$onAuth(function(authData){
-          if(!authData){
-            console.log('You are not logged in. Please log in.');
-          } else {
-            scope.links = $firebaseArray(fb);
+        scope.$watch('isLoggedIn', function(i,o){
+          scope.isLoggedIn = o;
+        });
+
+        fb.on('value', function(data){
+          if(fireUser.isLoggedIn()){
+            scope.links = $firebaseArray(data.ref());
             scope.loadingData = false;
-
-
-
-
-            scope.ownsDocument = function(docId){
-              var userId = fireUser.isLoggedIn().$getAuth().uid;
-              var fbLinks = new Firebase(FIREBASE_URI + 'links/' + docId[0] + '/createdBy/' + userId);
-
-              fbLinks.orderByChild('uid')
-                .startAt(userId)
-                .endAt(userId)
-                .on('value', function(snap){
-                  if(snap.key() === userId)
-                    scope.ownsLink = true;
-                  else
-                    scope.ownsLink = false;
-
-                  return scope.ownsLink;
-                });
-
-            }
-
+            scope.isLoggedIn = true;
           }
         });
+
+        // Check if the current user owns the document. If so, return true.
+        scope.ownsDocument = function(docId){
+          var userId = fireUser.isLoggedIn().$getAuth().uid;
+          var fbLinks = new Firebase(FIREBASE_URI + 'links/' + docId);
+
+          fbLinks.orderByChild('createdBy')
+            .limitToFirst(2)
+            .on('value', function(snap){
+              scope.isOwner = (snap.val().createdBy.uid === userId);
+            });
+          return scope.isOwner;
+        }
+
+        // Delete link, only if you own the document.
+        scope.linkDelete = function(linkId){
+        var fbLinks = new Firebase(FIREBASE_URI + 'links/' + linkId);
+
+        fbLinks.once('value', function(snap){
+          scope.linkTitle = snap.val().title;
+        });
+
+        var verifyDelete = confirm('Delete link: ' + scope.linkTitle + '?');
+        if(verifyDelete && scope.ownsDocument(linkId)){
+          fbLinks.remove(function(er){
+            if(er)
+              console.error('Error: ' + er);
+            else
+              console.log('Link: ' + scope.linkTitle + ' deleted.');
+          });
+        } else {
+          console.error('Document not deleted.');
+        }
       }
     }
+  }
 });

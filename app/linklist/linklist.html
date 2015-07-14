@@ -1,16 +1,19 @@
 
 <!-- Template for link-list directive.-->
-<article ng-repeat="link in links | orderBy:'-createdAt'" class="link-post">
+<article ng-repeat="link in links | orderBy:'-createdAt'" ng-if="isLoggedIn" class="link-post">
   <div class="link-heading">
     <h2><a ng-href="{{link.url}}" ng-bind="link.title" target="_BLANK"></a></h2>
-    <div class="delete-link-btn"><a href="#"><i class="fa fa-times fa-2x"></i></a></div>
+    <div ng-if="ownsDocument(link.$id)" class="delete-link-btn"><a href="#" class="link-edit"><i class="fa fa-edit fa-lg"></i></a><a href="#" ng-click="linkDelete(link.$id)" class="link-delete"><i class="fa fa-times fa-lg"></i></a></div>
   </div>
+  <div class="link-subhead"><a ng-bind="link.url" ng-href="link.url" target="_BLANK" class="link-url"></a></div>
   <div class="link-description"> 
     <p>{{ link.description }}</p>
-    <p><span ng-bind="ownsDocument(['{{link.$id}}'])"></span></p>
   </div>
   <div class="link-footer">
     <div class="link-footer-postedby"><span class="postedBy">Posted by {{ link.createdBy.name }}</span><span class="postedOn">{{ link.createdAt | stringToDate }}</span></div>
     <div class="link-footer-tags"><a href="#" ng-repeat="tag in link.tags track by $index">{{ tag }}</a></div>
   </div>
+</article>
+<article ng-if="!isLoggedIn" class="error">
+  <p>You aren't logged in. Try logging in.</p>
 </article>

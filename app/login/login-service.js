@@ -1,4 +1,4 @@
-login.factory('fireUser', function($firebaseArray, $firebaseAuth, FIREBASE_URI){
+login.factory('fireUser', function($window, $firebaseArray, $firebaseAuth, FIREBASE_URI){
   var fb = new Firebase(FIREBASE_URI);
   var auth = $firebaseAuth(fb);
   var fbUser = new Firebase(FIREBASE_URI + 'users/');
@@ -48,10 +48,11 @@ login.factory('fireUser', function($firebaseArray, $firebaseAuth, FIREBASE_URI){
                 'read' : [],
                 'foundUseful' : []
             };
-
             fbUserAdd.child(authData.uid).set(newUser);
+            $window.location.reload();
           } else {
             console.log('Welcome, ' + authData.github.displayName);
+            $window.location.reload();
           }
 
         })
@@ -63,7 +64,6 @@ login.factory('fireUser', function($firebaseArray, $firebaseAuth, FIREBASE_URI){
       auth.$authWithOAuthPopup('google')
         .then(function(authData){
           if(!checkUserExist(authData.uid)){
-            console.log(authData);
             var fbUserAdd = new Firebase(FIREBASE_URI + 'users/');
             var fbUserArrayAdd = $firebaseArray(fbUserAdd);
 
@@ -85,7 +85,13 @@ login.factory('fireUser', function($firebaseArray, $firebaseAuth, FIREBASE_URI){
         });
     },
     logOut: function(){
-      return auth.$unauth();
+      var logOutAuth = (auth.$getAuth()) ? auth:false;
+      if(logOutAuth){
+        auth.$unauth();
+        $window.location.reload();
+      } else {
+        return;
+      }
     }
   };
 });

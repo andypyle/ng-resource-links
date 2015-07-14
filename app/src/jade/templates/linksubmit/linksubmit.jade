@@ -1,9 +1,12 @@
 // Template for link-submit directive.
-article.submitLink(ng-if='canSubmit')
-  .addLink-heading
-    h2 Add Link 
+article.submitLink(ng-if='isLoggedIn')
+  .addLink-heading(ng-click='showAddLink()')
+    h2 Add Link
+    a.show-addLink(href='#')
+      i.fa.fa-plus.fa-2x(ng-if='!visible')
+      i.fa.fa-minus.fa-2x(ng-if='visible')
     
-  form#addLink(name='addLinkForm', ng-submit='addLink(linkAdd.title, linkAdd.url, linkAdd.desc, linkTagsArray)')
+  form#addLink(name='addLinkForm', ng-submit='addLink(linkAdd.title, linkAdd.url, linkAdd.desc, linkTagsArray)', ng-class="{'addLinkVisible': visible}")
     .addLink-title
       input(type='text', ng-model='linkAdd.title', name='linkTitle', ng-maxlength='140', maxlength='140', required)
       label(for='linkTitle', ng-class="{'titleError': !addlinkForm.link.title.$pristine && addLinkForm.linkTitle.$error.maxlength || linkAdd.title.length === 140}") Title

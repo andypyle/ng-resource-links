@@ -171,7 +171,7 @@ main section {
      -moz-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 80%;
+  width: 60%;
   padding: 1.5rem;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -206,15 +206,63 @@ main section article {
 main section article.submitLink {
   background-color: #edf9fe;
   color: #5d9bb8;
+  overflow: hidden;
 }
 
 main section article.submitLink .addLink-heading {
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+     -moz-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+  -webkit-align-items: baseline;
+     -moz-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  -webkit-flex-flow: row nowrap;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  margin: -1rem;
+  padding: 0rem;
+  border-radius: .25rem;
+  -webkit-transition: all 250ms ease-in-out;
+     -moz-transition: all 250ms ease-in-out;
+          transition: all 250ms ease-in-out;
 }
 
 main section article.submitLink .addLink-heading h2 {
-  margin-top: 0;
+  margin: 1rem;
+  margin-right: 0;
   font-size: 1.75rem;
+}
+
+main section article.submitLink .addLink-heading a {
+  color: #5d9bb8;
+  text-align: right;
+  margin: 1rem;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+     -moz-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+main section article.submitLink .addLink-heading:hover {
+  cursor: pointer;
+  background-color: #d9f2fd;
+  -webkit-transform: scale(1.01);
+     -moz-transform: scale(1.01);
+      -ms-transform: scale(1.01);
+          transform: scale(1.01);
+  -webkit-transition: all 250ms ease-in-out;
+     -moz-transition: all 250ms ease-in-out;
+          transition: all 250ms ease-in-out;
 }
 
 main section article.submitLink #addLink {
@@ -230,6 +278,27 @@ main section article.submitLink #addLink {
      -moz-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-top: 1.5rem;
+  margin: 0;
+  overflow: hidden;
+  max-height: 0;
+  padding: 0;
+  -webkit-transition: all 200ms ease-in-out;
+     -moz-transition: all 200ms ease-in-out;
+          transition: all 200ms ease-in-out;
+}
+
+main section article.submitLink #addLink.addLinkVisible {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: all 200ms ease-in-out;
+     -moz-transition: all 200ms ease-in-out;
+          transition: all 200ms ease-in-out;
+  max-height: 1200px;
+  margin-top: 1.5rem;
 }
 
 main section article.submitLink #addLink .addLink-title,
@@ -372,24 +441,106 @@ main section article.submitLink #addLink textarea {
 }
 
 main section article .link-heading {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
   width: 100%;
-  position: relative;
+  -webkit-box-align: baseline;
+  -webkit-align-items: baseline;
+     -moz-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+     -moz-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 main section article .link-heading h2 {
   margin: 0;
   font-size: 1.75rem;
+  -webkit-flex-basis: 75%;
+      -ms-flex-preferred-size: 75%;
+          flex-basis: 75%;
+  width: 75%;
 }
 
 main section article .link-heading h2 a {
   color: #466947;
 }
 
+main section article .link-heading .delete-link-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start !important;
+  -webkit-align-items: flex-start !important;
+     -moz-box-align: start !important;
+      -ms-flex-align: start !important;
+          align-items: flex-start !important;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+     -moz-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-flex-basis: 75%;
+      -ms-flex-preferred-size: 75%;
+          flex-basis: 75%;
+  width: 25%;
+}
+
 main section article .link-heading .delete-link-btn a {
-  position: absolute;
-  top: 0rem;
-  right: 0rem;
+  padding-left: .5rem;
+  margin: 0;
+  -webkit-transition: all 250ms ease-in-out;
+     -moz-transition: all 250ms ease-in-out;
+          transition: all 250ms ease-in-out;
+  display: inline-block;
+}
+
+main section article .link-heading .delete-link-btn a.link-delete {
   color: #E57373;
+  margin-bottom: .15rem !important;
+  line-height: 1;
+}
+
+main section article .link-heading .delete-link-btn a.link-delete:hover {
+  color: #ea8d8d;
+}
+
+main section article .link-heading .delete-link-btn a.link-edit {
+  color: #29B6F6;
+}
+
+main section article .link-heading .delete-link-btn a.link-edit:hover {
+  color: #46c0f7;
+}
+
+main section article .link-heading .delete-link-btn a:hover {
+  -webkit-transform: scale(1.025) translate(-1px, -1px);
+     -moz-transform: scale(1.025) translate(-1px, -1px);
+      -ms-transform: scale(1.025) translate(-1px, -1px);
+          transform: scale(1.025) translate(-1px, -1px);
+  text-shadow: 1px 1px 0px rgba(70, 105, 71, 0.25);
+}
+
+main section article .link-subhead {
+  border-bottom: 1px solid #cfdfd0;
+  padding-bottom: .5rem;
+}
+
+main section article .link-subhead a.link-url {
+  color: #b0cbb1;
+  font-size: .85rem;
+}
+
+main section article .link-description {
+  padding-top: 0;
 }
 
 main section article .link-description p {
