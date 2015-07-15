@@ -201,6 +201,9 @@ main section article {
   border-radius: .25rem;
   color: #466947;
   margin-bottom: 1.5rem;
+  -webkit-transition: all 250ms ease-in-out;
+     -moz-transition: all 250ms ease-in-out;
+          transition: all 250ms ease-in-out;
 }
 
 main section article.submitLink {
@@ -472,6 +475,14 @@ main section article .link-heading h2 a {
   color: #466947;
 }
 
+main section article .link-heading h2 input {
+  font-size: 1.75rem;
+  padding: .25rem;
+  border: 0;
+  border-bottom: 1px dashed rgba(41, 182, 246, 0.75);
+  background: transparent;
+}
+
 main section article .link-heading .delete-link-btn {
   display: -webkit-box;
   display: -webkit-flex;
@@ -521,6 +532,14 @@ main section article .link-heading .delete-link-btn a.link-edit:hover {
   color: #46c0f7;
 }
 
+main section article .link-heading .delete-link-btn a.link-edit-confirm {
+  color: #81C784;
+}
+
+main section article .link-heading .delete-link-btn a.link-edit-confirm:hover {
+  color: #83e387;
+}
+
 main section article .link-heading .delete-link-btn a:hover {
   -webkit-transform: scale(1.025) translate(-1px, -1px);
      -moz-transform: scale(1.025) translate(-1px, -1px);
@@ -539,6 +558,15 @@ main section article .link-subhead a.link-url {
   font-size: .85rem;
 }
 
+main section article .link-subhead input {
+  font-size: .85rem;
+  width: 50%;
+  padding: .25rem;
+  border: 0;
+  border-bottom: 1px dashed rgba(41, 182, 246, 0.75);
+  background: transparent;
+}
+
 main section article .link-description {
   padding-top: 0;
 }
@@ -548,6 +576,16 @@ main section article .link-description p {
   line-height: 1.5;
   font-size: 1.15rem;
   font-weight: normal;
+}
+
+main section article .link-description textarea {
+  font-size: 1.15rem;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  border-bottom: 1px dashed rgba(41, 182, 246, 0.75);
+  margin-top: 1rem;
+  font-family: sans-serif;
 }
 
 main section article .link-footer {
@@ -611,6 +649,16 @@ main section article .link-footer .link-footer-tags {
 }
 
 main section article .link-footer .link-footer-tags a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: .35rem;
   line-height: 1;
   margin: .25rem;
@@ -618,6 +666,37 @@ main section article .link-footer .link-footer-tags a {
   background-color: #dde3e6;
   color: #79a67b;
   border-radius: .2rem;
+  -webkit-transition: all 250ms ease-in-out;
+     -moz-transition: all 250ms ease-in-out;
+          transition: all 250ms ease-in-out;
+}
+
+main section article .link-footer .link-footer-tags a .tag-delete {
+  padding-left: .25rem;
+  color: rgba(229, 115, 115, 0.5);
+}
+
+main section article .link-footer .link-footer-tags a:hover {
+  color: #5c8b5e;
+  -webkit-transition: all 200ms ease-in-out;
+     -moz-transition: all 200ms ease-in-out;
+          transition: all 200ms ease-in-out;
+}
+
+main section article .link-footer .link-footer-tags a:hover .tag-delete {
+  color: #E57373;
+}
+
+main section article .link-footer .link-footer-tags input {
+  display: block;
+  width: 100%;
+  min-width: 100%;
+  padding: .35rem;
+  font-size: .85rem;
+  text-align: right;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px dashed rgba(41, 182, 246, 0.75);
 }
 
 main footer {
@@ -684,4 +763,27 @@ main footer {
 
 .disabled:hover {
   cursor: default !important;
+}
+
+.disabledEdit {
+  opacity: .2;
+  -webkit-transition: all 250ms ease-in-out;
+     -moz-transition: all 250ms ease-in-out;
+          transition: all 250ms ease-in-out;
+}
+
+.disabledEdit:hover {
+  cursor: default !important;
+}
+
+.editMode {
+  -webkit-transform: scale(1.05);
+     -moz-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+          transform: scale(1.05);
+  background-color: #ecf9ff;
+  box-shadow: 0px 6px 12px rgba(70, 105, 71, 0.1);
+  -webkit-transition: all 250ms ease-in-out;
+     -moz-transition: all 250ms ease-in-out;
+          transition: all 250ms ease-in-out;
 }

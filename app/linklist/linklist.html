@@ -1,18 +1,29 @@
 
 <!-- Template for link-list directive.-->
-<article ng-repeat="link in links | orderBy:'-createdAt'" ng-if="isLoggedIn" class="link-post">
-  <div class="link-heading">
-    <h2><a ng-href="{{link.url}}" ng-bind="link.title" target="_BLANK"></a></h2>
-    <div ng-if="ownsDocument(link.$id)" class="delete-link-btn"><a href="#" class="link-edit"><i class="fa fa-edit fa-lg"></i></a><a href="#" ng-click="linkDelete(link.$id)" class="link-delete"><i class="fa fa-times fa-lg"></i></a></div>
-  </div>
-  <div class="link-subhead"><a ng-bind="link.url" ng-href="link.url" target="_BLANK" class="link-url"></a></div>
-  <div class="link-description"> 
-    <p>{{ link.description }}</p>
-  </div>
-  <div class="link-footer">
-    <div class="link-footer-postedby"><span class="postedBy">Posted by {{ link.createdBy.name }}</span><span class="postedOn">{{ link.createdAt | stringToDate }}</span></div>
-    <div class="link-footer-tags"><a href="#" ng-repeat="tag in link.tags track by $index">{{ tag }}</a></div>
-  </div>
+<article ng-repeat="link in links | orderBy:'-createdAt'" ng-if="isLoggedIn" ng-class="{'editMode': editing===$index}" class="link-post">
+  <form id="editor" name="editForm" ng-submit="saveEdit(link.$id)">
+    <div class="link-heading">
+      <h2><a ng-href="{{link.url}}" ng-init="refreshTitle(link.title)" ng-bind="link.title" target="_BLANK" ng-if="editing != $index"></a>
+        <input type="text" name="editTitle" ng-model="editor.title" ng-init="editor.title = link.title" ng-maxlength="140" maxlength="140" required="required" ng-if="editing===$index" value="{{link.title}}"/>
+      </h2>
+      <div ng-if="ownsDocument(link.$id)" class="delete-link-btn"><a href="#" ng-click="linkEdit(link.$id)" ng-if="editing != $index" class="link-edit"><i class="fa fa-edit fa-lg"></i></a>
+        <button href="#" type="submit" ng-disabled="(linkSamePost != linkExists) || (linkExists &amp;&amp; editForm.$invalid) || editForm.$invalid" ng-class="{'disabledEdit': (linkSamePost != linkExists) || (linkExists &amp;&amp; editForm.$invalid) || editForm.$invalid }" ng-if="editing===$index" class="link-edit-confirm"><i class="fa fa-check fa-lg"></i></button><a href="#" ng-click="linkDelete(link.$id)" ng-if="editing != $index" class="link-delete"><i class="fa fa-times fa-lg"></i></a>
+      </div>
+    </div>
+    <div class="link-subhead"><a ng-bind="link.url" ng-href="link.url" target="_BLANK" ng-if="editing != $index" class="link-url"></a>
+      <input type="text" name="editUrl" ng-model="editor.url" ng-init="editor.url = link.url" ng-pattern="/^(https?://)?([da-z.-]+).([a-z.]{2,6})([/w .-]*)*/?$/" ng-change="checkLink(editor.url, link.$id)" required="required" ng-if="editing===$index" value="{{link.url}}"/>
+    </div>
+    <div class="link-description"> 
+      <p ng-bind="link.description" ng-if="editing != $index"></p>
+      <textarea name="editDesc" ng-model="editor.description" ng-init="editor.description = link.description" ng-maxlength="300" maxlength="300" required="required" ng-if="editing===$index"></textarea>
+    </div>
+    <div class="link-footer">
+      <div class="link-footer-postedby"><span class="postedBy">Posted by {{ link.createdBy.name }}</span><span class="postedOn">{{ link.createdAt | stringToDate }}</span></div>
+      <div ng-init="refreshTags(link.tags)" class="link-footer-tags"><a href="#" ng-repeat="tag in link.tags track by $index" ng-if="editing != $parent.$index">{{ tag }}</a><a href="#" ng-repeat="tag in editorTags track by $index" ng-click="removeTag($index)" ng-if="editing === $parent.$index">{{ tag }}<span class="tag-delete"><i class="fa fa-times"></i></span></a>
+        <input type="text" name="editorTags" ng-list=", " ng-init="refreshTags(link.tags)" ng-model="editorTags" ng-change="editTags(editorTags)" required="required" ng-if="editing === $parent.$index"/>
+      </div>
+    </div>
+  </form>
 </article>
 <article ng-if="!isLoggedIn" class="error">
   <p>You aren't logged in. Try logging in.</p>

@@ -121,6 +121,7 @@ main
       border-radius: .25rem
       color: $darkText
       margin-bottom: 1.5rem
+      transition: all 250ms ease-in-out
 
       &.submitLink
         background-color: lighten($blue, 40%)
@@ -257,6 +258,14 @@ main
           a
             color: $darkText
 
+          input
+            font-size: 1.75rem
+            padding: .25rem
+            border: 0
+            border-bottom: 1px dashed transparentize($blue, .25)
+            background: transparent
+
+
         .delete-link-btn
           +flex
           align-items: flex-start !important
@@ -279,6 +288,11 @@ main
               &:hover
                 color: lighten($blue, 6%)
 
+            &.link-edit-confirm
+              color: $green
+              &:hover
+                color: lighten(saturate($green, 25%), 6%)
+
             &:hover
               transform: scale(1.025) translate(-1px, -1px)
               text-shadow: 1px 1px 0px transparentize($darkText, .75)
@@ -290,6 +304,14 @@ main
           color: lighten($darkText, 40%)
           font-size: .85rem
 
+        input
+          font-size: .85rem
+          width: 50%
+          padding: .25rem
+          border: 0
+          border-bottom: 1px dashed transparentize($blue, .25)
+          background: transparent
+
       .link-description
         padding-top: 0
         p
@@ -297,6 +319,15 @@ main
           line-height: 1.5
           font-size: 1.15rem
           font-weight: normal
+
+        textarea
+          font-size: 1.15rem
+          width: 100%
+          border: 0
+          background: transparent
+          border-bottom: 1px dashed transparentize($blue, .25)
+          margin-top: 1rem
+          font-family: sans-serif
 
       .link-footer
         +flex
@@ -319,6 +350,8 @@ main
           flex-flow: row wrap
           max-width: 70%
           a
+            +flex
+            align-items: center
             padding: .35rem
             line-height: 1
             margin: .25rem
@@ -326,6 +359,30 @@ main
             background-color: darken(#ECEFF1, 5%)
             color: lighten($darkText, 22%)
             border-radius: .2rem
+            transition: all 250ms ease-in-out
+
+            .tag-delete
+              padding-left: .25rem
+              color: transparentize($red, .5)
+
+            &:hover
+              color: lighten($darkText, 11%)
+              transition: all 200ms ease-in-out
+              .tag-delete
+                color: $red
+
+          input
+            display: block
+            width: 100%
+            min-width: 100%
+            padding: .35rem
+            font-size: .85rem
+            text-align: right
+            background: transparent
+            border: 0
+            border-bottom: 1px dashed transparentize($blue, .25)
+
+
 
   footer
     width: 100%
@@ -376,3 +433,15 @@ main
   transition: all 250ms ease-in-out
   &:hover
     cursor: default !important
+
+.disabledEdit
+  opacity: .2
+  transition: all 250ms ease-in-out
+  &:hover
+    cursor: default !important
+
+.editMode
+  transform: scale(1.05)
+  background-color: lighten(saturate($blue, 15%), 40%)
+  box-shadow: 0px 6px 12px transparentize($darkText, .9)
+  transition: all 250ms ease-in-out

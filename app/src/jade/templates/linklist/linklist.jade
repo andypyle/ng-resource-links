@@ -1,28 +1,41 @@
 // Template for link-list directive.
-article(ng-repeat="link in links | orderBy:'-createdAt'", ng-if="isLoggedIn").link-post
-  .link-heading
-    h2
-      a(ng-href='{{link.url}}', ng-bind='link.title', target='_BLANK')
-    
-    .delete-link-btn(ng-if="ownsDocument(link.$id)")
-      a(href='#').link-edit
-        i.fa.fa-edit.fa-lg
-      a(href='#', ng-click='linkDelete(link.$id)').link-delete
-        i.fa.fa-times.fa-lg
+article(ng-repeat="link in links | orderBy:'-createdAt'", ng-if="isLoggedIn", ng-class="{'editMode': editing===$index}").link-post
+  form#editor(name='editForm', ng-submit='saveEdit(link.$id)')
+    .link-heading
+      h2
+        a(ng-href='{{link.url}}', ng-init='refreshTitle(link.title)', ng-bind='link.title', target='_BLANK', ng-if='editing != $index')
+        input(type='text', name='editTitle', ng-model='editor.title', ng-init='editor.title = link.title', ng-maxlength='140', maxlength='140', required, ng-if='editing===$index', value='{{link.title}}')
+      
+      .delete-link-btn(ng-if="ownsDocument(link.$id)")
+        a(href='#', ng-click='linkEdit(link.$id)', ng-if='editing != $index').link-edit
+          i.fa.fa-edit.fa-lg
+        button(href='#', type='submit', ng-disabled='(linkSamePost != linkExists) || (linkExists && editForm.$invalid) || editForm.$invalid', ng-class="{'disabledEdit': (linkSamePost != linkExists) || (linkExists && editForm.$invalid) || editForm.$invalid }", ng-if='editing===$index').link-edit-confirm
+          i.fa.fa-check.fa-lg
+        a(href='#', ng-click='linkDelete(link.$id)', ng-if='editing != $index').link-delete
+          i.fa.fa-times.fa-lg
+          
+    .link-subhead
+      a.link-url(ng-bind='link.url', ng-href='link.url', target='_BLANK', ng-if='editing != $index')
+      input(type='text', name='editUrl', ng-model='editor.url', ng-init='editor.url = link.url', ng-pattern='/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/', ng-change='checkLink(editor.url, link.$id)', required, ng-if='editing===$index', value='{{link.url}}')
         
-  .link-subhead
-    a.link-url(ng-bind='link.url', ng-href='link.url', target='_BLANK')
+    .link-description  
+      p(ng-bind='link.description', ng-if='editing != $index')
+      textarea(name='editDesc', ng-model='editor.description', ng-init='editor.description = link.description', ng-maxlength='300', maxlength='300', required, ng-if='editing===$index')
       
-  .link-description  
-    p {{ link.description }}
-    
-  .link-footer
-    .link-footer-postedby
-      span.postedBy Posted by {{ link.createdBy.name }}
-      span.postedOn {{ link.createdAt | stringToDate }}
+    .link-footer
+      .link-footer-postedby
+        span.postedBy Posted by {{ link.createdBy.name }}
+        span.postedOn {{ link.createdAt | stringToDate }}
+        
+      .link-footer-tags(ng-init='refreshTags(link.tags)')
+        a(href='#', ng-repeat="tag in link.tags track by $index", ng-if="editing != $parent.$index") {{ tag }}
+        
+        a(href='#', ng-repeat="tag in editorTags track by $index", ng-click='removeTag($index)', ng-if="editing === $parent.$index") {{ tag }}
+          span.tag-delete
+            i.fa.fa-times
+        
+        input(type='text', name='editorTags', ng-list=", ", ng-init='refreshTags(link.tags)', ng-model='editorTags', ng-change='editTags(editorTags)', required, ng-if='editing === $parent.$index')
       
-    .link-footer-tags
-      a(href='#', ng-repeat="tag in link.tags track by $index") {{ tag }}
       
 article.error(ng-if='!isLoggedIn')
   p You aren't logged in. Try logging in.
